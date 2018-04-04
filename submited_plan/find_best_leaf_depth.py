@@ -3,7 +3,6 @@ import time
 import pandas as pd
 import lightgbm as lgb
 from sklearn.metrics import log_loss
-import matplotlib.pyplot as plt
 import warnings
 
 
@@ -45,10 +44,12 @@ if __name__ == "__main__":
     #忽略警告
     warnings.filterwarnings("ignore")
     online = False# 这里用来标记是 线下验证 还是 在线提交
+    # online = True# 这里用来标记是 线下验证 还是 在线提交
 
     data = pd.read_csv('round1_ijcai_18_train_20180301.txt', sep=' ')
     data.drop_duplicates(inplace=True)
     data = convert_data(data)
+    # print(data)
 
     #True or False两种方式，一种生成.csv用于提交，由阿里妈妈官方评分，一种直接获取本地评分
     if online == False:
@@ -68,19 +69,31 @@ if __name__ == "__main__":
                 ]
     #训练目标
     target = ['is_trade']
-
-    #fit与classifier的参数理解还不太明白
+    log_loss_score = []
     if online == False:
         #categorical_feature分类特征
         #参考链接http://lightgbm.apachecn.org/cn/latest/Python-API.html
-        clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
-        clf.fit(train[features], train[target], feature_name=features,
-                categorical_feature=['user_gender_id',])
-        test['lgb_predict'] = clf.predict_proba(test[features],)[:, 1]
-        print(log_loss(test[target], test['lgb_predict']))
+        for num_leaf in range(25,60):
+            for max_deep in range(10):
+                clf = lgb.LGBMClassifier(num_leaves=num_leaf, max_depth=max_deep, n_estimators=80, n_jobs=20)
+                clf.fit(train[features], train[target], feature_name=features,
+                        categorical_feature=['user_gender_id','user_occupation_id',])
+                test['lgb_predict'] = clf.predict_proba(test[features],)[:, 1]
+                ll = log_loss(test[target], test['lgb_predict'])
+                log_loss_score.append([num_leaf,max_deep,ll])
+                print("num_leaf:" + str(num_leaf) + "\nmax_deep:"+ str(max_deep)+'\n')
+
+        with open('log_loss.csv','w') as f:
+            for i in log_loss_score:
+                for j in i:
+                    f.write(str(j) + ' ')
+                f.write('\n')
+
     else:
         clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
         clf.fit(train[features], train[target],
                 categorical_feature=['user_gender_id', ])
         test['predicted_score'] = clf.predict_proba(test[features])[:, 1]
         test[['instance_id', 'predicted_score']].to_csv('baseline.csv', index=False,sep=' ')#保存在线提交结果
+    #fit与classifier的参数理解还不太明白
+

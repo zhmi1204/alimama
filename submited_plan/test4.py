@@ -3,7 +3,6 @@ import time
 import pandas as pd
 import lightgbm as lgb
 from sklearn.metrics import log_loss
-import matplotlib.pyplot as plt
 import warnings
 
 
@@ -49,6 +48,7 @@ if __name__ == "__main__":
     data = pd.read_csv('round1_ijcai_18_train_20180301.txt', sep=' ')
     data.drop_duplicates(inplace=True)
     data = convert_data(data)
+    # print(data)
 
     #True or False两种方式，一种生成.csv用于提交，由阿里妈妈官方评分，一种直接获取本地评分
     if online == False:
@@ -73,13 +73,13 @@ if __name__ == "__main__":
     if online == False:
         #categorical_feature分类特征
         #参考链接http://lightgbm.apachecn.org/cn/latest/Python-API.html
-        clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
+        clf = lgb.LGBMClassifier(num_leaves=44, max_depth=6, n_estimators=80, n_jobs=20)
         clf.fit(train[features], train[target], feature_name=features,
                 categorical_feature=['user_gender_id',])
         test['lgb_predict'] = clf.predict_proba(test[features],)[:, 1]
         print(log_loss(test[target], test['lgb_predict']))
     else:
-        clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
+        clf = lgb.LGBMClassifier(num_leaves=44, max_depth=6, n_estimators=80, n_jobs=20)
         clf.fit(train[features], train[target],
                 categorical_feature=['user_gender_id', ])
         test['predicted_score'] = clf.predict_proba(test[features])[:, 1]

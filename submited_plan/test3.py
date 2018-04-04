@@ -3,7 +3,6 @@ import time
 import pandas as pd
 import lightgbm as lgb
 from sklearn.metrics import log_loss
-import matplotlib.pyplot as plt
 import warnings
 
 
@@ -44,39 +43,54 @@ def convert_data(data):
 if __name__ == "__main__":
     #忽略警告
     warnings.filterwarnings("ignore")
-    online = False# 这里用来标记是 线下验证 还是 在线提交
+    online = True #在线提交
+    # online = False #线下验证
 
     data = pd.read_csv('round1_ijcai_18_train_20180301.txt', sep=' ')
     data.drop_duplicates(inplace=True)
     data = convert_data(data)
+    # 选择训练的特征
+    features = ['item_price_level', 'item_sales_level','is_trade',
+                'item_collected_level', 'item_pv_level', 'user_gender_id', 'user_occupation_id',
+                'user_age_level', 'user_star_level','day',
+                                                     'shop_review_num_level', 'shop_star_level',
+                'shop_review_positive_rate', 'shop_score_service', 'shop_score_delivery', 'shop_score_description',
+                'context_page_id' ]
+    df=data[features]
+
+    # 训练目标
+    target = ['is_trade']
+    #
+
+    # print(data)
 
     #True or False两种方式，一种生成.csv用于提交，由阿里妈妈官方评分，一种直接获取本地评分
     if online == False:
-        train = data.loc[data.day < 24]  # 18,19,20,21,22,23,24
-        test = data.loc[data.day == 24]  # 暂时先使用第24天作为验证集
+        train = df.loc[df.day < 24]  # 18,19,20,21,22,23,24
+        test = df.loc[df.day == 24]  # 暂时先使用第24天作为验证集
+        train.drop('day',axis=1,inplace=True)
+        test.drop('day',axis=1,inplace=True)
     elif online == True:
-        train = data.copy()
+        train = df.copy()
         test = pd.read_csv('round1_ijcai_18_test_a_20180301.txt', sep=' ')
         test = convert_data(test)
 
-    #选择训练的特征
-    features = ['item_id', 'item_brand_id', 'item_city_id', 'item_price_level', 'item_sales_level',
+    feature= ['item_price_level', 'item_sales_level',
                 'item_collected_level', 'item_pv_level', 'user_gender_id', 'user_occupation_id',
-                'user_age_level', 'user_star_level', 'user_query_day', 'user_query_day_hour',
-                'context_page_id', 'hour', 'shop_id', 'shop_review_num_level', 'shop_star_level',
+                'user_age_level', 'user_star_level',
+                'shop_review_num_level', 'shop_star_level',
                 'shop_review_positive_rate', 'shop_score_service', 'shop_score_delivery', 'shop_score_description',
-                ]
-    #训练目标
-    target = ['is_trade']
+              'context_page_id'  ]
 
+#
     #fit与classifier的参数理解还不太明白
+    #num_leaves=2^max_depth
+    #参考链接：https://zhuanlan.zhihu.com/p/27916208
     if online == False:
-        #categorical_feature分类特征
-        #参考链接http://lightgbm.apachecn.org/cn/latest/Python-API.html
         clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
-        clf.fit(train[features], train[target], feature_name=features,
-                categorical_feature=['user_gender_id',])
-        test['lgb_predict'] = clf.predict_proba(test[features],)[:, 1]
+        clf.fit(train[feature], train[target], feature_name=feature, categorical_feature=['user_gender_id', 'user_occupation_id',
+                'user_age_level'])
+        test['lgb_predict'] = clf.predict_proba(test[feature],)[:, 1]
         print(log_loss(test[target], test['lgb_predict']))
     else:
         clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)

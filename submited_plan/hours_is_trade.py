@@ -2,8 +2,8 @@
 import time
 import pandas as pd
 import lightgbm as lgb
-from sklearn.metrics import log_loss
 import matplotlib.pyplot as plt
+from sklearn.metrics import log_loss
 import warnings
 
 
@@ -49,38 +49,29 @@ if __name__ == "__main__":
     data = pd.read_csv('round1_ijcai_18_train_20180301.txt', sep=' ')
     data.drop_duplicates(inplace=True)
     data = convert_data(data)
+    # print(data['hour'].value_counts())
+    # 输出
+    isbuy = []
+    nobuy = []
 
-    #True or False两种方式，一种生成.csv用于提交，由阿里妈妈官方评分，一种直接获取本地评分
-    if online == False:
-        train = data.loc[data.day < 24]  # 18,19,20,21,22,23,24
-        test = data.loc[data.day == 24]  # 暂时先使用第24天作为验证集
-    elif online == True:
-        train = data.copy()
-        test = pd.read_csv('round1_ijcai_18_test_a_20180301.txt', sep=' ')
-        test = convert_data(test)
-
-    #选择训练的特征
-    features = ['item_id', 'item_brand_id', 'item_city_id', 'item_price_level', 'item_sales_level',
-                'item_collected_level', 'item_pv_level', 'user_gender_id', 'user_occupation_id',
-                'user_age_level', 'user_star_level', 'user_query_day', 'user_query_day_hour',
-                'context_page_id', 'hour', 'shop_id', 'shop_review_num_level', 'shop_star_level',
-                'shop_review_positive_rate', 'shop_score_service', 'shop_score_delivery', 'shop_score_description',
-                ]
-    #训练目标
-    target = ['is_trade']
-
-    #fit与classifier的参数理解还不太明白
-    if online == False:
-        #categorical_feature分类特征
-        #参考链接http://lightgbm.apachecn.org/cn/latest/Python-API.html
-        clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
-        clf.fit(train[features], train[target], feature_name=features,
-                categorical_feature=['user_gender_id',])
-        test['lgb_predict'] = clf.predict_proba(test[features],)[:, 1]
-        print(log_loss(test[target], test['lgb_predict']))
-    else:
-        clf = lgb.LGBMClassifier(num_leaves=63, max_depth=7, n_estimators=80, n_jobs=20)
-        clf.fit(train[features], train[target],
-                categorical_feature=['user_gender_id', ])
-        test['predicted_score'] = clf.predict_proba(test[features])[:, 1]
-        test[['instance_id', 'predicted_score']].to_csv('baseline.csv', index=False,sep=' ')#保存在线提交结果
+    #每个小时出现的记录数
+    hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+    counts = [10795,4486,2464,1889,1564,2336,5388,11014,15481,19925,24324,24082,24667,27497,27218,26868,24562,23450,25358,33733,41118,42751,35973,21168]
+    for i in range(0,24):
+        #/counts意为取比例
+        isbuy.append(len(data[(data['hour'] == i)&(data['is_trade'] == 1)].index.tolist())/counts[i])
+        nobuy.append(len(data[(data['hour'] == i)&(data['is_trade'] == 0)].index.tolist())/counts[i])
+    # 画直方图
+    plt.bar(hours, isbuy, label='isbuy')
+    plt.bar(hours, nobuy, bottom=isbuy, label='nobuy')
+    # 坐标轴使用刻度
+    plt.grid(True)
+    # 覆盖plt.bar里面的横轴
+    plt.xticks(hours)
+    # 显示图例
+    plt.legend(loc=0)
+    # 显示横纵轴标签等
+    plt.xlabel('hours')
+    plt.ylabel('trade_counts')
+    plt.title('hours&is_trade')
+    plt.show()
