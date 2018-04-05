@@ -47,7 +47,9 @@ if __name__ == "__main__":
     data.drop_duplicates(inplace=True)
     data = convert_data(data)
 
-    #data['mouth'] = data.time.apply(lambda x: int(x[5:7]))获得如下结果
+    #data['mouth'] = data.time.apply(lambda x: int(x[5:7]))
+
+    #data.day.value_counts()
     #9月份
     # 18 78261
     # 21 71195

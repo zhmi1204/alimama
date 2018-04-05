@@ -61,7 +61,7 @@ if __name__ == "__main__":
     #print(data.reset_index())
     data = data.reset_index(drop=True)
 
-    print(data.user_id[0])
+    # print(data.user_id[0])
     index_user=1
     index_item=1
     new_ss=[]
@@ -79,7 +79,7 @@ if __name__ == "__main__":
                 for new_s in range((len(s)-1)):
                     new_ss.append(2)
                 new_ss.append(3)
-        print(new_ss)
+        # print(new_ss)
 
     data=pd.concat([data,pd.DataFrame({'item_sees':new_ss})],axis=1)
     data.to_csv('2new_data.csv',index=False,sep=' ')
