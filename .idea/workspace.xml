@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef397dc6-0b90-47c9-9151-57e87bc00038" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/submited_plan/sortNewBaselineByInstanceIdOfTest.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/submited_plan/test3.py" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/submited_plan/item_property_value_counts.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/submited_plan/test4.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/submited_plan/day_is_grade.py" afterPath="$PROJECT_DIR$/submited_plan/day_is_grade.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/submited_plan/test4.py" afterPath="$PROJECT_DIR$/submited_plan/test4.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/submited_plan/user_sorted_by_frequency_of_item_id_1_2_3.py" afterPath="$PROJECT_DIR$/submited_plan/user_sorted_by_frequency_of_item_id_1_2_3.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,7 +17,7 @@
     <SUITE FILE_PATH="coverage/alimama$test7.coverage" NAME="test7 Coverage Results" MODIFIED="1522672718620" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
     <SUITE FILE_PATH="coverage/alimama$hours_divided_6.coverage" NAME="hours_divided_6 Coverage Results" MODIFIED="1522754226688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
     <SUITE FILE_PATH="coverage/alimama$hours_is_trade.coverage" NAME="hours_is_trade Coverage Results" MODIFIED="1522911335748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
-    <SUITE FILE_PATH="coverage/alimama$test4.coverage" NAME="test4 Coverage Results" MODIFIED="1522842717514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
+    <SUITE FILE_PATH="coverage/alimama$test4.coverage" NAME="test4 Coverage Results" MODIFIED="1522918403792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
     <SUITE FILE_PATH="coverage/alimama$test3.coverage" NAME="test3 Coverage Results" MODIFIED="1522911784397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
     <SUITE FILE_PATH="coverage/alimama$srcdata_show.coverage" NAME="srcdata_show Coverage Results" MODIFIED="1522496668379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/alimama$user_sorted_by_frequency_of_item_id.coverage" NAME="user_sorted_by_frequency_of_item_id Coverage Results" MODIFIED="1522828136961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/submited_plan" />
@@ -62,11 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sortNewBaselineByInstanceIdOfTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/submited_plan/sortNewBaselineByInstanceIdOfTest.py">
+      <file leaf-file-name="item_property_value_counts.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/submited_plan/item_property_value_counts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+            <state relative-caret-position="720">
+              <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
               <folding>
                 <element signature="e#13#32#0" expanded="true" />
               </folding>
@@ -74,11 +71,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test4.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/submited_plan/test4.py">
+      <file leaf-file-name="find_best_leaf_depth.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/submited_plan/find_best_leaf_depth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
-              <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+            <state relative-caret-position="833">
+              <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="day_is_grade.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/submited_plan/day_is_grade.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-30">
+              <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
               <folding>
                 <element signature="e#13#24#0" expanded="true" />
               </folding>
@@ -133,9 +140,9 @@
         <option value="$PROJECT_DIR$/submited_plan/user_sorted_by_frequency_of_item_id_1_2_3.py" />
         <option value="$PROJECT_DIR$/submited_plan/user_sorted_by_frequency_of_item_id.py" />
         <option value="$PROJECT_DIR$/submited_plan/day_is_grade.py" />
-        <option value="$PROJECT_DIR$/submited_plan/test4.py" />
         <option value="$PROJECT_DIR$/submited_plan/4.4_1_new_baseline.csv" />
         <option value="$PROJECT_DIR$/submited_plan/test3.py" />
+        <option value="$PROJECT_DIR$/submited_plan/test4.py" />
       </list>
     </option>
   </component>
@@ -145,7 +152,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="893" />
     <option name="y" value="86" />
     <option name="width" value="1194" />
@@ -222,7 +229,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test3">
+  <component name="RunManager" selected="Python.test4">
     <configuration name="1_2_3_dividual" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -290,7 +297,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="alimama" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/submited_plan/test4.py" />
+      <option name="SCRIPT_NAME" value="F:\developerSoft\python_work\alimama\submited_plan\item_property_value_counts.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -322,9 +329,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test3" />
-        <item index="1" class="java.lang.String" itemvalue="Python.hours_is_trade" />
-        <item index="2" class="java.lang.String" itemvalue="Python.test4" />
+        <item index="0" class="java.lang.String" itemvalue="Python.test4" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test3" />
+        <item index="2" class="java.lang.String" itemvalue="Python.hours_is_trade" />
         <item index="3" class="java.lang.String" itemvalue="Python.user_sorted_by_frequency_of_item_id_1_2_3" />
         <item index="4" class="java.lang.String" itemvalue="Python.1_2_3_dividual" />
       </list>
@@ -356,7 +363,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -364,8 +371,8 @@
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5571273" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39281827" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55821544" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6343852" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20735608" sideWeight="0.49074075" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15031983" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -577,14 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submited_plan/import_feature_show.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/submited_plan/hours_divided_6.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-332">
@@ -599,14 +598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/submited_plan/find_best_leaf_depth.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1822">
-          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -705,16 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submited_plan/day_is_grade.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
-          <folding>
-            <element signature="e#13#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/submited_plan/hehe.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -764,20 +745,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/submited_plan/sortNewBaselineByInstanceIdOfTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
+        <state relative-caret-position="60">
+          <caret line="2" column="15" lean-forward="true" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
           <folding>
             <element signature="e#13#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/submited_plan/test4.py">
+    <entry file="file://$PROJECT_DIR$/submited_plan/import_feature_show.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+        <state relative-caret-position="60">
+          <caret line="2" column="9" lean-forward="false" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submited_plan/find_best_leaf_depth.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submited_plan/day_is_grade.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="7" column="27" lean-forward="true" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
           <folding>
             <element signature="e#13#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/submited_plan/item_property_value_counts.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding>
+            <element signature="e#13#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
