@@ -345,13 +345,61 @@ def plot_position(data):
     plt.show()
 ############################################################################################################
 #def
-def test(data):
-    a = data.loc(0)
-    print(a)
+def userInfToOneHot(data):
+    from sklearn import preprocessing
+    import numpy as np
+    # user_occupation_id           用户的预测职业编号，Int类型
+    # user_age_level               用户的预测年龄等级，Int类型；数值越大表示年龄越大
+    # user_gender_id               用户的预测性别编号，Int类型；0表示女性用户，1表示男性用户，2表示家庭用户,-1为缺省值
+    tmp = data.loc[:, ['user_occupation_id', 'user_age_level', 'user_gender_id']]
+    #将所有的-1替换成4
+    occ_counts = tmp.user_occupation_id.replace(-1,4)
+    age_counts = tmp.user_age_level.replace(-1,4)
+    gender_counts = tmp.user_gender_id.replace(-1,4)
+    # print(occ_counts,age_counts,gender_counts)
+    tmpd = pd.DataFrame({'user_occupation_id':occ_counts,'user_gender_id':age_counts,'user_age_level':gender_counts})
+    # print(tmp.user_occupation_id.replace(-1,4).value_counts())
+    # print(tmp.user_age_level.replace(-1,4).value_counts())
+    # print(tmp.user_gender_id.replace(-1,4).value_counts())
+    # one-hot编码不允许模板数据为负
+    enc = preprocessing.OneHotEncoder()
+    #特征user_occupation_id：5位 4，2002，2003，2004，2005
+    #特征user_age_level：9位 4，1000，1001，1002，1003，1004，1005，1006，1007
+    #特征user_gender_id：4位 4，0，1，2
 
-
-
-
+    #此处匹配格式为'user_occupation_id','user_age_level','user_gender_id'
+    enc.fit([[4,4,4],
+             [2002,1000,0],
+             [2003,1001,1],
+             [2004,1002,2],
+             [2005,1003,2],
+             [2005,1004,2],
+             [2005,1005,2],
+             [2005,1006,2],
+             [2005,1007,2]])
+    userInf = [[],[],[]]
+    for i in range(2):
+        dest = list(tmp.iloc[i].values)
+        enc_array = enc.transform([dest]).toarray()
+        arrayTostrings = ''
+        for j in range(5):
+            arrayTostrings += str(int(enc_array[0][j]))
+            # print(arrayTostrings)
+        userInf[0].append(arrayTostrings)
+        arrayTostrings = ''
+        #经测试，此处不可直接替换tmpd.DataFrame里面的值，因为DataFrame创建时
+        #固定好了某columns数据类型为int64
+        # print("tmpd",tmpd.user_occupation_id[i])
+        for j in range(5,14):
+            arrayTostrings += str(int(enc_array[0][j]))
+            # print(arrayTostrings)
+        userInf[1].append(arrayTostrings)
+        arrayTostrings = ''
+        for j in range(14,18):
+            arrayTostrings += str(int(enc_array[0][j]))
+            # print(arrayTostrings)
+        userInf[2].append(arrayTostrings)
+        print(userInf)
 
 
 
@@ -396,5 +444,4 @@ if __name__ == "__main__":
 
     ########################################################################################################
     #代码#
-    # test(data)
-    print(data)
+    userInfToOneHot(data)
