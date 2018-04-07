@@ -343,8 +343,11 @@ def plot_position(data):
     data = pd.DataFrame({u'nobuy': nobuy, u'isbuy': isbuy})
     data.plot(kind='bar', stacked=True)
     plt.show()
-############################################################################################################
-#def
+
+#保持原数据不变，返回值新增三个onehot列
+#   user_age_level_onehot/原user_age_level
+#   user_gender_id_onehot/原user_gender_id
+#   user_occupation_id_onehot/原user_occupation_id
 def userInfToOneHot(data):
     from sklearn import preprocessing
     import numpy as np
@@ -356,11 +359,7 @@ def userInfToOneHot(data):
     occ_counts = tmp.user_occupation_id.replace(-1,4)
     age_counts = tmp.user_age_level.replace(-1,4)
     gender_counts = tmp.user_gender_id.replace(-1,4)
-    # print(occ_counts,age_counts,gender_counts)
-    tmpd = pd.DataFrame({'user_occupation_id':occ_counts,'user_gender_id':age_counts,'user_age_level':gender_counts})
-    # print(tmp.user_occupation_id.replace(-1,4).value_counts())
-    # print(tmp.user_age_level.replace(-1,4).value_counts())
-    # print(tmp.user_gender_id.replace(-1,4).value_counts())
+    tmpd = pd.DataFrame({'user_occupation_id':occ_counts,'user_age_level':age_counts,'user_gender_id':gender_counts})
     # one-hot编码不允许模板数据为负
     enc = preprocessing.OneHotEncoder()
     #特征user_occupation_id：5位 4，2002，2003，2004，2005
@@ -378,28 +377,35 @@ def userInfToOneHot(data):
              [2005,1006,2],
              [2005,1007,2]])
     userInf = [[],[],[]]
-    for i in range(2):
-        dest = list(tmp.iloc[i].values)
+    for i in range(len(data.user_occupation_id)):
+        dest = list(tmpd.iloc[i].values)
+        # 不知道怎么回事，跟fit的顺序不对，显示的是[1004, 0, 2002]，所以交换一下
+        tmp_list = dest[2]
+        dest[2],dest[1] = dest[1],dest[0]
+        dest[0] = tmp_list
         enc_array = enc.transform([dest]).toarray()
         arrayTostrings = ''
         for j in range(5):
             arrayTostrings += str(int(enc_array[0][j]))
-            # print(arrayTostrings)
         userInf[0].append(arrayTostrings)
         arrayTostrings = ''
-        #经测试，此处不可直接替换tmpd.DataFrame里面的值，因为DataFrame创建时
-        #固定好了某columns数据类型为int64
-        # print("tmpd",tmpd.user_occupation_id[i])
+        #经测试，此处不可直接替换tmpd.DataFrame里面的值，因为DataFrame创建时固定好了某columns数据类型为int64
         for j in range(5,14):
             arrayTostrings += str(int(enc_array[0][j]))
-            # print(arrayTostrings)
         userInf[1].append(arrayTostrings)
         arrayTostrings = ''
         for j in range(14,18):
             arrayTostrings += str(int(enc_array[0][j]))
-            # print(arrayTostrings)
         userInf[2].append(arrayTostrings)
-        print(userInf)
+        # print(userInf)
+    return pd.concat([data,pd.DataFrame({
+                            'user_occupation_id_onehot':userInf[0],
+                            'user_age_level_onehot':userInf[1],
+                            'user_gender_id_onehot':userInf[2]})],
+                     axis = 1)
+############################################################################################################
+#def
+
 
 
 
@@ -434,6 +440,10 @@ def userInfToOneHot(data):
                                         本方法生成新特征position，用于标注item_category_list的第二个
                                         类目在predict_category_property里面第几个;前出现
 16--def plot_position(data):            生成item_cate_lst_pos_predict_property的position图像
+17--def userInfToOneHot(data):          保持原数据不变，返回值新增三个onehot列
+                                        user_age_level_onehot/原user_age_level
+                                        user_gender_id_onehot/原user_gender_id
+                                        user_occupation_id_onehot/原user_occupation_id
 '''
 
 if __name__ == "__main__":
