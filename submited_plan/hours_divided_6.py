@@ -42,9 +42,6 @@ def convert_data(data):
 
 
 if __name__ == "__main__":
-    #忽略警告
-    warnings.filterwarnings("ignore")
-    online = False# 这里用来标记是 线下验证 还是 在线提交
 
     data = pd.read_csv('round1_ijcai_18_train_20180301.txt', sep=' ')
     data.drop_duplicates(inplace=True)

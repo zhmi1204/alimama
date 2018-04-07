@@ -49,13 +49,12 @@ if __name__ == "__main__":
     data = pd.read_csv('round1_ijcai_18_train_20180301.txt', sep=' ')
     data.drop_duplicates(inplace=True)
     data = convert_data(data)
-    # print(data['hour'].value_counts())
-    # 输出
     isbuy = []
     nobuy = []
 
     #每个小时出现的记录数
     hours = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+    #手动统计出来的train数据里面每个小时的总浏览次数print(data['hour'].value_counts())
     counts = [10795,4486,2464,1889,1564,2336,5388,11014,15481,19925,24324,24082,24667,27497,27218,26868,24562,23450,25358,33733,41118,42751,35973,21168]
     for i in range(0,24):
         #/counts意为取比例

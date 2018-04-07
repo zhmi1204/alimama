@@ -40,6 +40,34 @@ def convert_data(data):
 
     return data
 
+#按照user/item_category_list/等顺序排序，生成frequency.txt文件
+def sort1123412(data):
+    data.item_category_list = data.item_category_list.map(lambda x: re.split(';', str(x))[-1])
+    # sort已弃用，要用sort_index或者sort_values
+    data = data[['user_id', 'item_category_list', 'day', 'hour', 'minute', 'second']]
+    # 按照user_id排序，再在user_id用item_category_list内排序，然后用hour,minute,second等等
+    data.sort_values(by=['user_id', 'item_category_list', 'day', 'hour', 'minute', 'second'],
+                     ascending=[0, 1, 2, 3, 4, 5], inplace=True)
+    f = []
+    tmp_user_id = tmp_item_category_list = k = 0
+    for row in data.iterrows():
+        if row[1]['user_id'] != tmp_user_id:
+            k = 1
+            tmp_user_id = row[1]['user_id']
+        else:  # 相同的user_id时
+            if row[1]['item_category_list'] != tmp_item_category_list:
+                k = 1
+            else:  # 相同的item时候
+                k += 1
+        tmp_item_category_list = row[1]['item_category_list']
+        f.append(k)
+        # count += 1
+        # print(count)
+    with open('frequency.txt', 'w')as file:
+        file.write(str(f))
+        # 经查验 f最大为9
+
+def sort122233(data):
 
 if __name__ == "__main__":
     #忽略警告

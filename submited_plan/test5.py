@@ -1,21 +1,9 @@
-#coding:utf8
 import pandas as pd
-import numpy as np
 import re
 
-def read_freq():
-    f = open('frequency.txt','r')
-    file = f.read()
-    condition = lambda t: t != ","
-    file = list(filter(condition,file))
-    file.pop(-1)
-    file.pop(0)
-    f.close()
-
-    list = []
-    for i in range(len(file)):
-        if file[i] == ' ':
-            continue
-        else:
-            list.append(int(file[i]))
-    return list
+data = pd.read_csv('3_new_test_1.csv',sep = ' ')
+tmp = data[data.instance_id == 4033950247523642138 ].predict_category_property
+# ls = re.split(';',str(tmp))
+# print(ls[0:10])
+print(list(tmp))
+# 8277336076276184272
